@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Loading, ProductList } from "..";
+import { ProductContext } from "../../context/products";
 
 export default function FeaturedProducts() {
-  return <h1>hello from featured products</h1>;
+  const { loading, featured } = useContext(ProductContext);
+
+  return loading ? (
+    <Loading />
+  ) : (
+    <ProductList title="Featured Products" products={featured} />
+  );
 }

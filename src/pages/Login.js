@@ -27,10 +27,10 @@ export default function Login() {
     if (isMember) {
       // res = await loginUser
     } else {
-      // res = await registerUser
+      res = await registerUser({ email, password, username });
     }
     if (res) {
-      //
+      console.log("success", res);
     } else {
       //
     }

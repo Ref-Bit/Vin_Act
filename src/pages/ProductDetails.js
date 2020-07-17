@@ -16,7 +16,7 @@ export default function ProductDetails() {
   ) : (
     <section className="single-product">
       <img
-        src={product.image.url}
+        src={product.image}
         alt={product.title}
         className="single-product-image"
       />

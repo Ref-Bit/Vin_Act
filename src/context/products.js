@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
 import url from "../utils/URL";
-import { featuredProducts } from "../utils/helpers";
+import { featuredProducts, flattenProduct } from "../utils/helpers";
 
 export const ProductContext = createContext();
 
@@ -15,9 +15,9 @@ export default function ProductProvider({ children }) {
     axios
       .get(`${url}/products`)
       .then(({ data }) => {
-        setProducts(data);
+        setProducts(flattenProduct(data));
+        setFeatured(featuredProducts(flattenProduct(data)));
         setLoading(false);
-        setFeatured(featuredProducts(data));
       })
       .catch((error) => console.log(error));
     return () => {};

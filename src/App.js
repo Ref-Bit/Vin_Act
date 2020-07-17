@@ -10,12 +10,13 @@ import {
   Products,
   ProductDetails,
 } from "./pages";
-import { Header } from "./components";
+import { Header, Alert } from "./components";
 
 export default function App() {
   return (
     <Router>
       <Header />
+      <Alert />
       <Switch>
         <Route exact path="/">
           <Home />

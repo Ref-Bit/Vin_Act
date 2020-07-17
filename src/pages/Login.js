@@ -6,7 +6,7 @@ import registerUser from "../strapi/registerUser";
 
 export default function Login() {
   const history = useHistory();
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, alert, showAlert } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("default");
@@ -31,17 +31,19 @@ export default function Login() {
       res = await registerUser({ email, password, username });
     }
     if (res) {
-      console.log("success", res);
       const {
         jwt: token,
         user: { username },
       } = res.data;
       const newUser = { token, username };
-      console.log("success", newUser);
       userLogin(newUser);
+      showAlert({ msg: `Hi ${username}, you have logged in successfully` });
       history.push("/products");
     } else {
-      //
+      showAlert({
+        msg: "There was an error. Please try again...",
+        type: "danger",
+      });
     }
   };
 

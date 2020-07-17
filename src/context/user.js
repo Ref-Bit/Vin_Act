@@ -10,6 +10,15 @@ function getUserFromLocalStorge() {
 function UserProvider({ children }) {
   // const [user, setUser] = useState({ username: null, token: null });
   const [user, setUser] = useState(getUserFromLocalStorge());
+  const [alert, setAlert] = useState({ show: false, msg: "", type: "success" });
+
+  const showAlert = ({ msg, type = "success" }) => {
+    setAlert({ show: true, msg, type });
+  };
+
+  const hideAlert = () => {
+    setAlert({ ...alert, show: false });
+  };
 
   const userLogin = (user) => {
     setUser(user);
@@ -21,7 +30,9 @@ function UserProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ user, userLogin, userLogout }}>
+    <UserContext.Provider
+      value={{ user, userLogin, userLogout, alert, showAlert, hideAlert }}
+    >
       {children}
     </UserContext.Provider>
   );

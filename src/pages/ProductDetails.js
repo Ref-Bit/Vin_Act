@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { ProductContext } from "../context/products";
+import { CartContext } from "../context/cart";
 import { Loading } from "../components";
 
 export default function ProductDetails() {
   let { id } = useParams();
   const history = useHistory();
   const { products } = useContext(ProductContext);
+  const { addToCart } = useContext(CartContext);
   const product = products.find((item) => item.id === parseInt(id));
 
   return products.length === 0 ? (
@@ -24,7 +26,7 @@ export default function ProductDetails() {
       <button
         className="btn btn-primary btn-block"
         onClick={() => {
-          // add to cart
+          addToCart(product);
           history.push("/cart");
         }}
       >

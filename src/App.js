@@ -10,13 +10,14 @@ import {
   Products,
   ProductDetails,
 } from "./pages";
-import { Header, Alert, PrivateRoute } from "./components";
+import { Header, Alert, PrivateRoute, ScrollButton } from "./components";
 
 export default function App() {
   return (
     <Router>
       <Header />
       <Alert />
+      <ScrollButton />
       <Switch>
         <Route exact path="/">
           <Home />

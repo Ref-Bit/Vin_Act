@@ -7,3 +7,5 @@ export { default as ScrollButton } from "./ScrollButton";
 export { default as PrivateRoute } from "./PrivateRoute";
 export { default as ProductList } from "./Products/ProductList";
 export { default as FeaturedProducts } from "./Products/FeaturedProducts";
+export { default as Filters } from "./Products/Filters";
+export { default as PageProduct } from "./Products/PageProduct";
